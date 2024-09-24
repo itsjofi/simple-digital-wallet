@@ -28,7 +28,7 @@ public class Wallet {
     private Boolean isMerchant;
 
     @Column(name = "balance", precision = 15, scale = 2, nullable = false)
-    private BigDecimal balance;
+    private BigDecimal balance = BigDecimal.ZERO;
 
     public Wallet() {
     }
