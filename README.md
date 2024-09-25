@@ -24,6 +24,7 @@ This project is built using the following technologies:
 - [Jasypt](http://www.jasypt.org/): Library for encrypting sensitive information such as passwords
 - [OpenFeign](https://github.com/OpenFeign/feign): Declarative HTTP client for accessing external clients
 - [JPA (Java Persistence API)](https://jakarta.ee/specifications/persistence/): Standard for ORM in Java applications
+- [Swagger](https://swagger.io/): Documentation tool for API specifications
 
 ## Getting Started
 
@@ -36,6 +37,8 @@ To run this project locally:
 5. Run `mvn spring-boot:run`
 
 The application will start, and you can access the API endpoints through `http://localhost:8080`.
+
+API documentation can be accessed at `http://localhost:8080/swagger-ui`.
 
 ## Inspiration
 
