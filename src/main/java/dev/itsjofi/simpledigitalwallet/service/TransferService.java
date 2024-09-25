@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -25,6 +26,24 @@ public class TransferService {
 
     @Autowired
     private TransferValidator transferValidator;
+
+    public List<Transfer> findAll(String senderId, String receiverId) {
+        if (senderId != null && receiverId != null) {
+            return transferRepository.findTransferBySenderIdAndReceiverId(
+                    Long.parseLong(senderId),
+                    Long.parseLong(receiverId));
+        }
+
+        if (senderId != null) {
+            return transferRepository.findTransferBySenderId(Long.parseLong(senderId));
+        }
+
+        if (receiverId != null) {
+            return transferRepository.findTransferByReceiverId(Long.parseLong(receiverId));
+        }
+
+        return transferRepository.findAll();
+    }
 
     @Transactional
     public Transfer transfer(TransferDto transferDto) {

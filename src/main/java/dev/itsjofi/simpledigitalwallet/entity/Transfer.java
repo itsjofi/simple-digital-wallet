@@ -25,6 +25,9 @@ public class Transfer {
     @Column(name = "created_at", columnDefinition = "TIMESTAMP WITH TIME ZONE")
     private OffsetDateTime createdAt;
 
+    public Transfer() {
+    }
+
     public Transfer(Long senderId, Long receiverId, BigDecimal amount) {
         this.senderId = senderId;
         this.receiverId = receiverId;
