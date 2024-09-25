@@ -22,7 +22,7 @@ This project is built using the following technologies:
 - [PostgreSQL](https://www.postgresql.org/): Open-source relational database
 - [Flyway](https://flywaydb.org/): Database migration tool for versioning and managing migrations
 - [Jasypt](http://www.jasypt.org/): Library for encrypting sensitive information such as passwords
-- [OpenFeign](https://openfeign.github.io/open-feign/): Declarative HTTP client for accessing external clients
+- [OpenFeign](https://github.com/OpenFeign/feign): Declarative HTTP client for accessing external clients
 - [JPA (Java Persistence API)](https://jakarta.ee/specifications/persistence/): Standard for ORM in Java applications
 
 ## Getting Started
