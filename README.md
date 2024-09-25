@@ -22,8 +22,8 @@ This project is built using the following technologies:
 - [PostgreSQL](https://www.postgresql.org/): Open-source relational database
 - [Flyway](https://flywaydb.org/): Database migration tool for versioning and managing migrations
 - [Jasypt](http://www.jasypt.org/): Library for encrypting sensitive information such as passwords
-- [Spring Cloud OpenFeign](https://spring.io/projects/spring-cloud-openfeign): Declarative HTTP client for accessing external clients
-- [Spring Data JPA](https://spring.io/projects/spring-data-jpa): Standard for ORM in Java applications
+- [OpenFeign](https://github.com/OpenFeign/feign): Declarative HTTP client for accessing external clients
+- [JPA (Java Persistence API)](https://jakarta.ee/specifications/persistence/): Standard for ORM in Java applications
 
 ## Getting Started
 
