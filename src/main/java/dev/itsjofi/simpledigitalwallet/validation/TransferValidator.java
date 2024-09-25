@@ -4,7 +4,6 @@ import dev.itsjofi.simpledigitalwallet.controller.dto.TransferDto;
 import dev.itsjofi.simpledigitalwallet.entity.Wallet;
 import dev.itsjofi.simpledigitalwallet.exception.InsufficientFundsException;
 import dev.itsjofi.simpledigitalwallet.exception.TransferNotAllowedException;
-import dev.itsjofi.simpledigitalwallet.exception.UnauthorizedTransferException;
 import dev.itsjofi.simpledigitalwallet.service.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

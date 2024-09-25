@@ -1,5 +1,6 @@
 package dev.itsjofi.simpledigitalwallet.service;
 
+import dev.itsjofi.simpledigitalwallet.controller.dto.AddFundsToWalletDto;
 import dev.itsjofi.simpledigitalwallet.controller.dto.CreateWalletDto;
 import dev.itsjofi.simpledigitalwallet.entity.Wallet;
 import dev.itsjofi.simpledigitalwallet.exception.WalletNotFoundException;
@@ -22,6 +23,14 @@ public class WalletService {
     public Wallet create(CreateWalletDto createWalletDto) {
         Wallet wallet = createWalletDto.toWalletEntity();
         wallet.setPassword(passwordEncryptor.encryptPassword(wallet.getPassword()));
+        return walletRepository.save(wallet);
+    }
+
+    public Wallet addFunds(Long walletId, AddFundsToWalletDto addFundsToWalletDto) {
+        Wallet wallet = walletRepository.findById(walletId)
+                .orElseThrow(() -> new WalletNotFoundException(walletId));
+        creditWallet(wallet, addFundsToWalletDto.amount());
+
         return walletRepository.save(wallet);
     }
 
