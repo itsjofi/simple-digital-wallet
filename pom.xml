@@ -72,6 +72,12 @@
 			<artifactId>jasypt-spring-boot-starter</artifactId>
 			<version>3.0.5</version>
 		</dependency>
+
+		<dependency>
+			<groupId>io.github.cdimascio</groupId>
+			<artifactId>dotenv-java</artifactId>
+			<version>3.0.2</version>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

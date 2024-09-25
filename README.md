@@ -9,7 +9,6 @@ The Simple Digital Wallet is a backend application that simulates basic operatio
 Key features include:
 
 - User registration and management
-- Balance inquiries
 - Money transfers between users
 - Transaction history
 
