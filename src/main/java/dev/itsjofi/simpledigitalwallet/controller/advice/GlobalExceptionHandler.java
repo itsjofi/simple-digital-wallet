@@ -1,5 +1,7 @@
 package dev.itsjofi.simpledigitalwallet.controller.advice;
 
+import dev.itsjofi.simpledigitalwallet.exception.DefaultException;
+import feign.FeignException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -10,6 +12,11 @@ import java.util.List;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
+    @ExceptionHandler(DefaultException.class)
+    public ProblemDetail handleDefaultException(DefaultException e) {
+        return e.toProblemDetail();
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ProblemDetail handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
