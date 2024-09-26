@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WalletService {
@@ -19,6 +21,14 @@ public class WalletService {
 
     @Autowired
     private StrongPasswordEncryptor passwordEncryptor;
+
+    public List<Wallet> findAll() {
+        return walletRepository.findAll();
+    }
+
+    public Optional<Wallet> findById(Long id) {
+        return walletRepository.findById(id);
+    }
 
     public Wallet create(CreateWalletDto createWalletDto) {
         Wallet wallet = createWalletDto.toWalletEntity();

@@ -5,16 +5,30 @@ import dev.itsjofi.simpledigitalwallet.controller.dto.CreateWalletDto;
 import dev.itsjofi.simpledigitalwallet.entity.Wallet;
 import dev.itsjofi.simpledigitalwallet.service.WalletService;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class WalletController {
 
     @Autowired
     private WalletService walletService;
+
+    @GetMapping("/wallet")
+    public ResponseEntity<List<Wallet>> findAll() {
+        return new ResponseEntity<>(walletService.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping("/wallet/{id}")
+    public ResponseEntity<Optional<Wallet>> findById(@PathVariable Long id) {
+        return new ResponseEntity<>(walletService.findById(id), HttpStatus.OK);
+    }
 
     @PostMapping("/wallet")
     public ResponseEntity<Wallet> createWallet(@RequestBody @Valid CreateWalletDto createWalletDto) {
