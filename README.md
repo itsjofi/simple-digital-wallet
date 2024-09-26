@@ -25,20 +25,26 @@ This project is built using the following technologies:
 - [OpenFeign](https://github.com/OpenFeign/feign): Declarative HTTP client for accessing external clients
 - [JPA (Java Persistence API)](https://jakarta.ee/specifications/persistence/): Standard for ORM in Java applications
 - [Swagger](https://swagger.io/): Documentation tool for API specifications
+- [Docker](https://www.docker.com/): Platform for developing, shipping, and running applications in containers
 
 ## Getting Started
 
-To run this project locally:
+To run this project locally using Docker:
 
-1. Clone the repository
+1. Clone the repository.
 2. Copy the `.env.example` file to a new file named `.env` and configure the environment variables as needed.
-3. Ensure you have Java and Maven installed
-4. Navigate to the project directory
-5. Run `mvn spring-boot:run`
+3. Copy the `config.example.json` file to a new file named `config.json` and configure so that pgAdmin automatically creates the server.
+4. Ensure you have Docker installed.
+5. Navigate to the project directory.
+6. Build and run the application using Docker Compose:
+
+```bash
+docker-compose up --build -d
+```
 
 The application will start, and you can access the API endpoints through `http://localhost:8080`.
 
-API documentation can be accessed at `http://localhost:8080/swagger-ui`.
+API documentation can be accessed at `http://localhost:8080/swagger-ui.html`.
 
 ## Inspiration
 
