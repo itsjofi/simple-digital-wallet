@@ -34,3 +34,6 @@ build/
 
 ### Env Files ###
 .env
+
+### PgAdmin Config Files ###
+config.json
