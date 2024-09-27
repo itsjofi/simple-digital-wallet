@@ -2,13 +2,18 @@ services:
   app:
     container_name: api
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${DB_NAME}
       SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_JPA_SHOW_SQL: "true"
       JASYPT_ENCRYPTOR_PASSWORD: ${JASYPT_ENCRYPTOR_PASSWORD}
+      MAVEN_OPTS: -Dspring-boot.run.profiles=dev
+    volumes:
+      - .:/app
+      - /root/.m2:/root/.m2
+    command: mvn spring-boot:run
     ports:
       - "8080:8080"
     depends_on:
