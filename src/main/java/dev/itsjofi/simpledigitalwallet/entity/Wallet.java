@@ -2,6 +2,7 @@ package dev.itsjofi.simpledigitalwallet.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 
 import java.math.BigDecimal;
 
@@ -19,6 +20,7 @@ public class Wallet {
     @Column(name = "cpf_cnpj", nullable = false, unique = true)
     private String cpfCnpj;
 
+    @Email(message = "Invalid email address")
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 

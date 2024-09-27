@@ -1,12 +1,17 @@
 package dev.itsjofi.simpledigitalwallet.controller.advice;
 
 import dev.itsjofi.simpledigitalwallet.controller.WalletController;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.ConstraintViolationException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestControllerAdvice(assignableTypes = WalletController.class)
 public class WalletExceptionHandler {
@@ -22,6 +27,21 @@ public class WalletExceptionHandler {
         } else {
             problemDetail.setDetail("Data integrity violation");
         }
+
+        return problemDetail;
+    }
+
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ProblemDetail handleConstraintViolationException(ConstraintViolationException e) {
+        ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
+
+        List<String> messages = e.getConstraintViolations()
+                .stream()
+                .map(ConstraintViolation::getMessage)
+                .collect(Collectors.toList());
+
+        problemDetail.setDetail(String.join(", ", messages));
 
         return problemDetail;
     }
