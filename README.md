@@ -33,14 +33,23 @@ To run this project locally using Docker:
 
 1. Clone the repository.
 2. Copy the `.env.example` file to a new file named `.env` and configure the environment variables as needed.
-3. Copy the `config.example.json` file to a new file named `config.json` and configure so that pgAdmin automatically creates the server.
+3. Copy the `config.example.json` file to a new file named `config.json` and configure it so that pgAdmin automatically creates the server.
 4. Ensure you have Docker installed.
 5. Navigate to the project directory.
-6. Build and run the application using Docker Compose:
 
-```bash
-docker-compose up --build -d
-```
+### Running the Application
+
+- For **development**, build and run the application using the following command:
+
+  ```bash
+  docker-compose -f docker-compose.dev.yaml up --build -d
+  ```
+
+- For **production**, build and run the application using the following command:
+
+  ```bash
+  docker-compose -f docker-compose.prod.yaml up --build -d
+  ```
 
 The application will start, and you can access the API endpoints through `http://localhost:8080`.
 
