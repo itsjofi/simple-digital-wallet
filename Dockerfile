@@ -1,17 +1,19 @@
-FROM maven:3.9.9-eclipse-temurin-22
+FROM maven:3.9.9-eclipse-temurin-22 AS builder
 
 WORKDIR /app
 
-COPY pom.xml ./
+COPY pom.xml .
 RUN mvn dependency:go-offline
 
 COPY src ./src
+RUN mvn clean package -DskipTests -X
 
-# Expose port 8080 for the application and 5005 for debugging
-EXPOSE 8080 5005
+FROM openjdk:22-jdk-slim
 
-# Use ENTRYPOINT to set the base command
-ENTRYPOINT ["mvn"]
+WORKDIR /app
 
-# Default command (can be overridden in docker-compose.yml)
-CMD ["spring-boot:run", "-Dspring-boot.run.jvmArguments=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"]
+COPY --from=builder /app/target/*.jar app.jar
+
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-jar", "app.jar"]

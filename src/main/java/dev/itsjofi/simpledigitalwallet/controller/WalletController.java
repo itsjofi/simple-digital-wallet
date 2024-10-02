@@ -5,7 +5,6 @@ import dev.itsjofi.simpledigitalwallet.controller.dto.CreateWalletDto;
 import dev.itsjofi.simpledigitalwallet.entity.Wallet;
 import dev.itsjofi.simpledigitalwallet.service.WalletService;
 import jakarta.validation.Valid;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
