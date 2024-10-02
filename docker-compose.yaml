@@ -2,7 +2,7 @@ services:
   app:
     container_name: api
     build:
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${DB_NAME}
       SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
@@ -12,10 +12,11 @@ services:
       MAVEN_OPTS: -Dspring-boot.run.profiles=dev
     volumes:
       - .:/app
-      - /root/.m2:/root/.m2
-    command: mvn spring-boot:run
+      - ~/.m2:/root/.m2
+    command: ["spring-boot:run", "-Dspring-boot.run.jvmArguments=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"]
     ports:
       - "8080:8080"
+      - "5005:5005"  # Debug port
     depends_on:
       - db
 
