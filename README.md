@@ -42,7 +42,7 @@ To run this project locally using Docker:
 - For **development**, build and run the application using the following command:
 
   ```bash
-  docker-compose -f docker-compose.dev.yaml up --build -d
+  docker-compose -f docker-compose.yaml up --build -d
   ```
 
 - For **production**, build and run the application using the following command:
@@ -54,6 +54,20 @@ To run this project locally using Docker:
 The application will start, and you can access the API endpoints through `http://localhost:8080`.
 
 API documentation can be accessed at `http://localhost:8080/swagger-ui.html`.
+
+### Running in Debug Mode on IntelliJ
+
+To run the application in debug mode using IntelliJ:
+
+1. **Set Up a Remote Debug Configuration in IntelliJ**  
+   1.1. Open IntelliJ and navigate to `Run` > `Edit Configurations`.  
+   1.2. Click the `+` button and select `Remote JVM Debug`.  
+   1.3. Set the host to `localhost` and the port to `5005`.  
+   1.4. Click `OK` to save the configuration.
+
+2. **Start Debugging**  
+   2.1. Once the application is running in Docker, you can start the remote debug configuration in IntelliJ.  
+   2.2. You should now be able to set breakpoints and debug your application as needed.
 
 ## Inspiration
 
