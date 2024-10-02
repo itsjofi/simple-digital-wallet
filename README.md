@@ -39,16 +39,10 @@ To run this project locally using Docker:
 
 ### Running the Application
 
-- For **development**, build and run the application using the following command:
+- Build and run the application using the following command:
 
   ```bash
   docker-compose -f docker-compose.yaml up --build -d
-  ```
-
-- For **production**, build and run the application using the following command:
-
-  ```bash
-  docker-compose -f docker-compose.prod.yaml up --build -d
   ```
 
 The application will start, and you can access the API endpoints through `http://localhost:8080`.
