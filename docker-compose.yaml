@@ -4,10 +4,10 @@ services:
     build:
       dockerfile: Dockerfile.dev
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/${DB_NAME}
-      SPRING_DATASOURCE_USERNAME: ${DB_USERNAME}
-      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
-      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      SPRING_JPA_SHOW_SQL: ${SPRING_JPA_SHOW_SQL}
       JASYPT_ENCRYPTOR_PASSWORD: ${JASYPT_ENCRYPTOR_PASSWORD}
       MAVEN_OPTS: -Dspring-boot.run.profiles=dev
     volumes:
@@ -20,7 +20,7 @@ services:
       ]
     ports:
       - "8080:8080"
-      - "5005:5005" # Debug port
+      - "5005:5005"
     depends_on:
       - db
 
@@ -30,8 +30,8 @@ services:
     image: postgres:16.4
     environment:
       POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USERNAME}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${SPRING_DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
